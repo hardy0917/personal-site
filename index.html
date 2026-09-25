@@ -191,7 +191,10 @@
   .contact .mono { color: var(--term-green); font-size: 14px; }
   .contact h2 { font-size: clamp(26px, 3.6vw, 36px); font-weight: 900; margin-top: 6px; color: #fff; }
   .contact p { margin: 6px 0 0; color: var(--term-dim); }
+  .contact .links { display: flex; flex-wrap: wrap; gap: 12px; }
   .contact .btn { background: #fff; color: #0b1020; border-color: #fff; }
+  .contact .btn.ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .35); }
+  .contact .btn.ghost:hover { border-color: #fff; }
 
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-block: 40px; color: var(--muted); font-size: 13px; }
 
@@ -377,7 +380,10 @@
         <h2>一起把系統做得更好</h2>
         <p>歡迎工作機會與合作洽詢。</p>
       </div>
-      <a class="btn" href="https://github.com/hardy0917" target="_blank" rel="noopener">github.com/hardy0917 →</a>
+      <div class="links">
+        <a class="btn" href="mailto:hardy44988820@gmail.com">hardy44988820@gmail.com</a>
+        <a class="btn ghost" href="https://github.com/hardy0917" target="_blank" rel="noopener">GitHub →</a>
+      </div>
     </div>
   </section>
 </main>
