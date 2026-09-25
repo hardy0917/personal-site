@@ -5,173 +5,189 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>賴宏運</title>
 <meta name="description" content="賴宏運的個人網站：軟體工程師，資工背景，具金融交易系統開發經驗。">
+<link rel="icon" href="avatar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-  /* ===== 配色：改這裡就能換整站顏色 ===== */
+  /* ===== 配色：黑色墨線 + 螢光筆黃，改這裡就能換整站顏色 ===== */
   :root {
-    --bg: #f3f5f2;
-    --surface: #ffffff;
-    --ink: #17221e;
-    --muted: #5a6962;
-    --line: #d9e0dc;
-    --accent: #1d6b58;
-    --accent-ink: #ffffff;
-    --accent-soft: #e0eee9;
-    --gold: #b7791f;
+    --paper: #ffffff;
+    --ink: #151515;
+    --muted: #5f5f63;
+    --rule: #e4e4e7;
+    --soft: #f5f5f4;
+    --mark: #ffe45c;
+    --mark-ink: #151515;
     color-scheme: light;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #0f1412; --surface: #171e1b; --ink: #e6ece9; --muted: #95a39c;
-      --line: #2a3531; --accent: #5cc2a5; --accent-ink: #0c1411; --accent-soft: #1b2d27; --gold: #e0a84a;
+      --paper: #141414; --ink: #f1f1ef; --muted: #a3a3a8; --rule: #2e2e31;
+      --soft: #1d1d1f; --mark: #8a7414; --mark-ink: #fffbe6;
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #0f1412; --surface: #171e1b; --ink: #e6ece9; --muted: #95a39c;
-    --line: #2a3531; --accent: #5cc2a5; --accent-ink: #0c1411; --accent-soft: #1b2d27; --gold: #e0a84a;
+    --paper: #141414; --ink: #f1f1ef; --muted: #a3a3a8; --rule: #2e2e31;
+    --soft: #1d1d1f; --mark: #8a7414; --mark-ink: #fffbe6;
     color-scheme: dark;
   }
 
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: var(--bg);
+    background: var(--paper);
     color: var(--ink);
-    font: 16px/1.8 "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    font: 16px/1.85 "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   }
-  a { color: var(--accent); }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .wrap { max-width: 1040px; margin: 0 auto; padding-inline: 20px; }
-  h1, h2, h3 { font-family: "Noto Serif TC", "Songti TC", serif; text-wrap: balance; line-height: 1.3; margin: 0; }
-  .label {
-    font: 500 12px/1 "JetBrains Mono", ui-monospace, monospace;
-    letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  a { color: inherit; }
+  a:focus-visible { outline: 2px dashed var(--ink); outline-offset: 4px; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding-inline: 20px; }
+  h1, h2, h3 {
+    font-family: "LXGW WenKai TC", "Kaiti TC", "DFKai-SB", serif;
+    font-weight: 700; line-height: 1.3; margin: 0; text-wrap: balance;
+  }
+  .mono { font: 500 13px/1.6 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .04em; }
+  /* 螢光筆效果 */
+  .hl {
+    background: linear-gradient(transparent 58%, var(--mark) 58%, var(--mark) 92%, transparent 92%);
+    padding-inline: .1em;
   }
 
   /* ===== 導覽列 ===== */
   header.nav {
     position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    background: color-mix(in srgb, var(--paper) 90%, transparent);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1.5px solid var(--ink);
   }
-  header.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-  .logo { font: 900 20px/1 "Noto Serif TC", serif; color: var(--ink); text-decoration: none; }
-  .logo span { color: var(--accent); }
-  nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
-  nav a { color: var(--muted); text-decoration: none; font-size: 15px; }
-  nav a:hover { color: var(--ink); }
+  header.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+  .home {
+    display: inline-flex; align-items: center; gap: 10px;
+    font: 700 17px/1 "LXGW WenKai TC", serif; text-decoration: none;
+  }
+  .home img { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--ink); background: #fff; }
+  nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+  nav a {
+    display: block; padding: 4px 12px; border-radius: 999px; text-decoration: none;
+    font-size: 15px; color: var(--muted);
+  }
+  nav a:hover { color: var(--ink); background: var(--soft); }
 
   /* ===== 開場 ===== */
-  .hero { padding-block: 64px 48px; }
-  .hero .wrap { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: center; }
-  .portrait {
-    width: 100%; max-width: 280px; aspect-ratio: 1; border-radius: 50%; overflow: hidden;
-    background: #fff; display: grid; place-items: center;
-    border: 1px solid var(--line);
-  }
-  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .portrait .initials { font: 900 96px/1 "Noto Serif TC", serif; color: var(--accent); }
-  .hero h1 { font-size: clamp(34px, 5vw, 52px); margin-block: 12px 16px; }
-  .hero h1 small { display: block; font-size: .42em; font-weight: 600; color: var(--muted); margin-top: 8px; }
-  .hero p.lead { font-size: 18px; color: var(--muted); max-width: 34em; margin: 0 0 20px; }
-  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
-  .badge {
-    font-size: 13px; padding: 4px 12px; border-radius: 999px;
-    background: var(--accent-soft); color: var(--accent); font-weight: 500;
-  }
-  .badge.award { background: transparent; color: var(--gold); border: 1px solid currentColor; }
+  .hero { padding-block: 72px 56px; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: center; }
+  .hero .jp { color: var(--muted); margin-bottom: 10px; }
+  .hero h1 { font-size: clamp(44px, 7vw, 72px); letter-spacing: .04em; }
+  .hero .role { font: 700 clamp(20px, 2.6vw, 26px)/1.5 "LXGW WenKai TC", serif; margin: 10px 0 20px; }
+  .hero p.lead { font-size: 17px; color: var(--muted); max-width: 32em; margin: 0 0 28px; }
   .cta { display: flex; flex-wrap: wrap; gap: 12px; }
   .btn {
-    display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 6px;
-    font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid var(--accent);
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 999px;
+    font-weight: 700; font-size: 15px; text-decoration: none; border: 1.5px solid var(--ink);
+    transition: transform .15s, box-shadow .15s;
   }
-  .btn.primary { background: var(--accent); color: var(--accent-ink); }
-  .btn.ghost { color: var(--accent); }
+  .btn.primary { background: var(--ink); color: var(--paper); }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--ink); }
+  .btn.primary:hover { box-shadow: 3px 3px 0 var(--mark); }
 
-  /* ===== 數字列 ===== */
-  .stats { border-block: 1px solid var(--line); background: var(--surface); }
-  .stats .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
-  .stat { padding-block: 26px; padding-inline: 8px; border-left: 1px solid var(--line); }
-  .stat:first-child { border-left: 0; }
-  .stat b { display: block; font: 900 30px/1.1 "Noto Serif TC", serif; font-variant-numeric: tabular-nums; }
-  .stat span { font-size: 14px; color: var(--muted); }
+  .avatar { position: relative; width: 100%; max-width: 300px; justify-self: center; }
+  .avatar::before {
+    /* 頭貼後面錯位的黃色圓，像手繪時沒對齊的色塊 */
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: var(--mark); transform: translate(14px, 12px);
+  }
+  .avatar img {
+    position: relative; display: block; width: 100%; aspect-ratio: 1; border-radius: 50%;
+    border: 2px solid var(--ink); background: #fff; object-fit: cover;
+  }
+
+  /* ===== 基本資料 ===== */
+  .facts { border-block: 1.5px solid var(--ink); }
+  .facts dl { display: grid; grid-template-columns: repeat(4, 1fr); margin: 0; }
+  .facts dl > div { padding: 20px 16px; border-left: 1px dashed var(--rule); }
+  .facts dl > div:first-child { border-left: 0; padding-left: 0; }
+  .facts dt { color: var(--muted); }
+  .facts dd { margin: 4px 0 0; font: 700 21px/1.35 "LXGW WenKai TC", serif; }
 
   /* ===== 區塊 ===== */
-  section.block { padding-block: 72px 8px; }
-  .block-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
-  .block-head h2 { font-size: clamp(26px, 3.4vw, 34px); }
-  .block-head p { margin: 0; color: var(--muted); max-width: 40em; }
+  section.block { padding-block: 80px 0; }
+  .block-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 36px; }
+  .block-head h2 { font-size: clamp(28px, 3.6vw, 36px); }
+  .block-head .mono { color: var(--muted); }
 
-  .about-text { max-width: 40em; font-size: 17px; }
-  .about-text p { margin: 0 0 1em; }
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 48px; font-size: 17px; }
+  .about p { margin: 0; }
+  .about p:first-child { grid-column: 1 / -1; font: 400 22px/1.7 "LXGW WenKai TC", serif; max-width: 36em; }
 
-  .focus { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .focus article {
-    background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
-    padding: 26px 24px; display: flex; flex-direction: column; gap: 10px;
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .skills article { border-top: 2px solid var(--ink); padding-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+  .skills h3 { font-size: 21px; }
+  .skills p { margin: 0; color: var(--muted); font-size: 15px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+  .chips li {
+    font-size: 14px; padding: 3px 12px; border: 1.5px solid var(--ink); border-radius: 999px; background: var(--paper);
   }
-  .focus h3 { font-size: 20px; }
-  .focus p { margin: 0; color: var(--muted); font-size: 15px; }
-  .focus ul { margin: 0; padding-left: 1.2em; font-size: 15px; }
+  .chips li.main { background: var(--mark); color: var(--mark-ink); }
 
-  .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); max-width: 44em; }
-  .timeline li { position: relative; padding: 0 0 28px 28px; }
-  .timeline li::before {
-    content: ""; position: absolute; left: -7px; top: 8px; width: 12px; height: 12px;
-    border-radius: 50%; background: var(--bg); border: 2px solid var(--accent);
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline > li {
+    display: grid; grid-template-columns: 170px 1fr; gap: 24px;
+    padding-block: 26px; border-top: 1px dashed var(--rule);
   }
-  .timeline time { font: 500 13px/1.6 "JetBrains Mono", ui-monospace, monospace; color: var(--accent); }
-  .timeline h3 { font-size: 18px; margin-block: 2px 4px; }
-  .timeline p { margin: 0; color: var(--muted); font-size: 15px; }
+  .timeline > li:first-child { border-top: 0; padding-top: 0; }
+  .timeline time { color: var(--muted); padding-top: 4px; }
+  .timeline h3 { font-size: 21px; margin-bottom: 2px; }
+  .timeline .org { color: var(--muted); font-size: 15px; margin: 0 0 10px; }
+  .timeline ul:not(.chips) { margin: 0; padding-left: 1.2em; }
+  .timeline .tags { margin-top: 12px; }
 
-  .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .why div { border-top: 2px solid var(--ink); padding-top: 16px; }
-  .why h3 { font-size: 19px; margin-bottom: 6px; }
-  .why p { margin: 0; color: var(--muted); font-size: 15px; }
+  .traits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .traits div { background: var(--soft); border-radius: 18px; padding: 24px; }
+  .traits h3 { font-size: 20px; margin-bottom: 6px; }
+  .traits p { margin: 0; color: var(--muted); font-size: 15px; }
 
-  .social { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-  .social a {
-    display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border-radius: 6px;
-    border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--ink);
-    transition: border-color .15s, transform .15s;
+  .contact {
+    margin-top: 96px; padding: 48px 40px; border: 2px solid var(--ink); border-radius: 24px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;
+    box-shadow: 8px 8px 0 var(--mark);
   }
-  .social a:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .social b { font-size: 17px; }
-  .social span { font-size: 13px; color: var(--muted); }
+  .contact h2 { font-size: clamp(28px, 4vw, 40px); }
+  .contact p { margin: 6px 0 0; color: var(--muted); }
 
-  footer { margin-top: 88px; border-top: 1px solid var(--line); }
-  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 28px; font-size: 14px; color: var(--muted); }
-  footer ul { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; }
-  footer a { color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-block: 40px; color: var(--muted); font-size: 14px; }
 
   @media (max-width: 820px) {
-    .hero .wrap { grid-template-columns: 1fr; gap: 28px; }
-    .portrait { max-width: 200px; }
-    .focus, .why { grid-template-columns: 1fr; }
-    .social { grid-template-columns: repeat(2, 1fr); }
-    .stats .wrap { grid-template-columns: repeat(2, 1fr); }
-    .stat:nth-child(3) { border-left: 0; }
-    .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
-    nav ul { gap: 14px; }
+    .hero { padding-block: 40px; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 36px; }
+    .avatar { max-width: 200px; justify-self: start; order: -1; }
+    .facts dl { grid-template-columns: repeat(2, 1fr); }
+    .facts dl > div:nth-child(3) { border-left: 0; padding-left: 0; }
+    .facts dl > div:nth-child(n+3) { border-top: 1px dashed var(--rule); }
+    .about, .skills, .traits { grid-template-columns: 1fr; }
+    .timeline > li { grid-template-columns: 1fr; gap: 4px; }
+    .contact { padding: 32px 24px; }
   }
-  @media (max-width: 480px) {
-    nav ul li:nth-child(n+3) { display: none; }
+  @media (max-width: 520px) {
+    nav a { padding: 4px 8px; font-size: 14px; }
+    .home span { display: none; }
   }
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top">回主頁</a>
+    <a class="home" href="#top"><img src="avatar.png" alt=""><span>回主頁</span></a>
     <nav aria-label="主選單">
       <ul>
-        <li><a href="#about">關於我</a></li>
+        <li><a href="#about">關於</a></li>
         <li><a href="#skills">技能</a></li>
         <li><a href="#journey">經歷</a></li>
         <li><a href="#contact">聯絡</a></li>
@@ -184,50 +200,40 @@
   <!-- ===== 開場 ===== -->
   <section class="hero">
     <div class="wrap">
-      <div class="portrait">
-        <img src="avatar.png" alt="賴宏運的頭貼">
-      </div>
       <div>
-        <div class="label">Software Engineer</div>
-        <h1>賴宏運<small>軟體工程師・國立彰化師範大學 資訊工程學系</small></h1>
-        <p class="lead">資工系畢業，曾在合作金庫商業銀行資訊部參與分行端末系統開發，用 Java 與 SQL DB2 維護銀行櫃員的交易系統。喜歡寫程式，也持續學習日文。</p>
-        <div class="badges">
-          <span class="badge">Java</span>
-          <span class="badge">SQL DB2</span>
-          <span class="badge">Python</span>
-          <span class="badge">C++</span>
-          <span class="badge">HTML</span>
-          <span class="badge">Git</span>
-        </div>
+        <div class="jp mono">ライ・コウウン ／ ソフトウェアエンジニア</div>
+        <h1>賴宏運</h1>
+        <p class="role">寫過銀行櫃員每天在用的系統的<span class="hl">軟體工程師</span></p>
+        <p class="lead">國立彰化師範大學資訊工程學系畢業。曾在合作金庫資訊部開發分行端末系統，用 Java 與 SQL DB2 修改、新增櫃員的交易功能。</p>
         <div class="cta">
           <a class="btn primary" href="#journey">看我的經歷</a>
-          <a class="btn ghost" href="https://github.com/hardy0917" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://github.com/hardy0917" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
+      <div class="avatar"><img src="avatar.png" alt="賴宏運的頭貼"></div>
     </div>
   </section>
 
   <!-- ===== 基本資料 ===== -->
-  <div class="stats">
+  <div class="facts">
     <div class="wrap">
-      <div class="stat"><b>6 個月</b><span>金融系統開發經驗</span></div>
-      <div class="stat"><b>資工學士</b><span>國立彰化師範大學</span></div>
-      <div class="stat"><b>軟體工程師</b><span>希望職稱</span></div>
-      <div class="stat"><b>台中市</b><span>居住地</span></div>
+      <dl>
+        <div><dt class="mono">工作經驗</dt><dd>6 個月・銀行業</dd></div>
+        <div><dt class="mono">學歷</dt><dd>彰師大 資工學士</dd></div>
+        <div><dt class="mono">希望職稱</dt><dd>軟體工程師</dd></div>
+        <div><dt class="mono">地點</dt><dd>台中市</dd></div>
+      </dl>
     </div>
   </div>
 
   <!-- ===== 關於我 ===== -->
   <section class="block" id="about">
     <div class="wrap">
-      <div class="block-head">
-        <div class="label">About</div>
-        <h2>關於我</h2>
-      </div>
-      <div class="about-text">
-        <p>我畢業於國立彰化師範大學資訊工程學系，個性積極主動，具備良好的團隊協作與溝通能力。在學期間熱衷於程式設計與日文，常主動參與各類課程專案與團隊合作。</p>
-        <p>大學四年按部就班學習資料結構、演算法、資料庫管理、網頁設計等課程。畢業後進入合作金庫資訊部，實際接觸金融交易系統，學會用 Java 修改功能、用 Git 與團隊協作開發。</p>
-        <p>接下來，我希望以軟體工程師的身分，把所學應用在實務開發上，參與更多跨平台或大型專案，並持續精進技術。</p>
+      <div class="block-head"><h2>關於我</h2><span class="mono">自己紹介</span></div>
+      <div class="about">
+        <p>個性積極主動，喜歡把問題拆開、一步步解掉。在學期間熱衷兩件事：<span class="hl">程式設計</span>和<span class="hl">日文</span>。</p>
+        <p>大學四年按部就班學習資料結構、演算法、資料庫管理、網頁設計，也常主動參與課程專案與團隊合作。畢業專題「無人超市」讓我第一次完整走過一個系統從規劃到實作的過程。</p>
+        <p>畢業後進入合作金庫資訊部，實際接觸金融交易系統，學會在嚴謹的流程裡用 Java 修改功能、用 Git 與團隊協作。接下來，我希望參與更多跨平台或大型專案，持續精進技術。</p>
       </div>
     </div>
   </section>
@@ -235,25 +241,22 @@
   <!-- ===== 技能 ===== -->
   <section class="block" id="skills">
     <div class="wrap">
-      <div class="block-head">
-        <div class="label">Skills</div>
-        <h2>專業技能</h2>
-      </div>
-      <div class="focus">
+      <div class="block-head"><h2>專業技能</h2><span class="mono">スキル</span></div>
+      <div class="skills">
         <article>
           <h3>後端與資料庫</h3>
           <p>在銀行實務中修改與新增交易功能。</p>
-          <ul><li>Java 程式修改與功能調整</li><li>SQL / DB2 資料庫</li><li>Python、C++</li></ul>
+          <ul class="chips"><li class="main">Java</li><li class="main">SQL DB2</li><li>Python</li><li>C++</li></ul>
         </article>
         <article>
           <h3>前端與介面</h3>
-          <p>畢業專題負責前端系統設計與實作。</p>
-          <ul><li>HTML 網頁設計</li><li>管理介面開發</li><li>前端與資料庫整合</li></ul>
+          <p>畢業專題負責前端系統的設計與實作。</p>
+          <ul class="chips"><li class="main">HTML</li><li>管理介面</li><li>資料庫整合</li></ul>
         </article>
         <article>
           <h3>協作與語言</h3>
-          <p>跨部門合作，從需求到驗收全程參與。</p>
-          <ul><li>Git 版本控管</li><li>可行性評估、規格撰寫、測試驗收</li><li>日文（持續進修中）</li></ul>
+          <p>跨部門合作，從需求一路參與到驗收。</p>
+          <ul class="chips"><li class="main">Git</li><li>規格撰寫</li><li>測試驗收</li><li>日文</li></ul>
         </article>
       </div>
     </div>
@@ -262,25 +265,42 @@
   <!-- ===== 經歷 ===== -->
   <section class="block" id="journey">
     <div class="wrap">
-      <div class="block-head">
-        <div class="label">Journey</div>
-        <h2>經歷</h2>
-      </div>
+      <div class="block-head"><h2>經歷</h2><span class="mono">経歴</span></div>
       <ol class="timeline">
         <li>
-          <time>2025.08 – 2026.01</time>
-          <h3>合作金庫商業銀行・三等職員（資訊部）</h3>
-          <p>分行端末系統：修改及新增銀行櫃員內部操作交易系統；與業務管理部門進行可行性評估、規格撰寫、測試及驗收。使用 Java、SQL DB2、Git。</p>
+          <time class="mono">2025.08 – 2026.01</time>
+          <div>
+            <h3>三等職員（資訊部）</h3>
+            <p class="org">合作金庫商業銀行・全端工程師・分行端末系統</p>
+            <ul>
+              <li>修改及新增銀行櫃員內部操作的交易系統。</li>
+              <li>與業務管理部門進行可行性評估、規格撰寫、測試及驗收。</li>
+            </ul>
+            <ul class="chips tags"><li>Java</li><li>SQL DB2</li><li>Git</li></ul>
+          </div>
         </li>
         <li>
-          <time>大四</time>
-          <h3>畢業專題「無人超市」</h3>
-          <p>整合多項技術的智慧零售系統。負責前端系統設計與實作，使用 SQL 與 HTML 撰寫管理介面，並與組員共同規劃系統架構與流程。</p>
+          <time class="mono">大四</time>
+          <div>
+            <h3>畢業專題「無人超市」</h3>
+            <p class="org">智慧零售系統・前端負責人</p>
+            <ul>
+              <li>負責前端系統設計與實作，用 SQL 與 HTML 撰寫管理介面。</li>
+              <li>與組員共同規劃系統架構與流程設計。</li>
+            </ul>
+            <ul class="chips tags"><li>HTML</li><li>SQL</li></ul>
+          </div>
         </li>
         <li>
-          <time>大學</time>
-          <h3>國立彰化師範大學・資訊工程學系</h3>
-          <p>修習資料結構、演算法、資料庫管理、網頁設計。大四加修英文系日文課與進階日文。</p>
+          <time class="mono">大學</time>
+          <div>
+            <h3>資訊工程學系 學士</h3>
+            <p class="org">國立彰化師範大學</p>
+            <ul>
+              <li>修習資料結構、演算法、資料庫管理、網頁設計。</li>
+              <li>大四加修英文系日文課，之後繼續修日文進階課。</li>
+            </ul>
+          </div>
         </li>
       </ol>
     </div>
@@ -289,30 +309,23 @@
   <!-- ===== 個人特質 ===== -->
   <section class="block">
     <div class="wrap">
-      <div class="block-head">
-        <div class="label">Strengths</div>
-        <h2>個人特質</h2>
-      </div>
-      <div class="why">
+      <div class="block-head"><h2>個人特質</h2><span class="mono">強み</span></div>
+      <div class="traits">
         <div><h3>樂於學習</h3><p>勇於接受挑戰，遇到問題主動找解法，持續自我成長。</p></div>
-        <div><h3>時間管理</h3><p>在繁忙課業與專案中有效安排進度，確保成果品質。</p></div>
+        <div><h3>時間管理</h3><p>在繁忙課業與專案中安排好進度，確保成果品質。</p></div>
         <div><h3>溝通協作</h3><p>在銀行與各部門緊密配合，掌握專案進度與需求。</p></div>
       </div>
     </div>
   </section>
 
   <!-- ===== 聯絡 ===== -->
-  <section class="block" id="contact">
-    <div class="wrap">
-      <div class="block-head">
-        <div class="label">Contact</div>
-        <h2>聯絡我</h2>
+  <section class="wrap" id="contact">
+    <div class="contact">
+      <div>
+        <h2>一起寫點什麼吧</h2>
         <p>歡迎工作機會與合作洽詢。</p>
       </div>
-      <div class="social">
-        <a href="https://github.com/hardy0917" target="_blank" rel="noopener"><b>GitHub</b><span>github.com/hardy0917</span></a>
-        <!-- 要加 Email 或 LinkedIn 就複製上面一行改網址 -->
-      </div>
+      <a class="btn primary" href="https://github.com/hardy0917" target="_blank" rel="noopener">github.com/hardy0917</a>
     </div>
   </section>
 </main>
@@ -320,6 +333,7 @@
 <footer>
   <div class="wrap">
     <span>© 2026 賴宏運</span>
+    <span class="mono">Made with HTML &amp; CSS</span>
   </div>
 </footer>
 
