@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>關於 小哲 Jay</title>
+<meta name="description" content="小哲 Jay 的個人網站：自我介紹、專長領域與社群連結。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+  /* ===== 配色：改這裡就能換整站顏色 ===== */
+  :root {
+    --bg: #f3f5f2;
+    --surface: #ffffff;
+    --ink: #17221e;
+    --muted: #5a6962;
+    --line: #d9e0dc;
+    --accent: #1d6b58;
+    --accent-ink: #ffffff;
+    --accent-soft: #e0eee9;
+    --gold: #b7791f;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1412; --surface: #171e1b; --ink: #e6ece9; --muted: #95a39c;
+      --line: #2a3531; --accent: #5cc2a5; --accent-ink: #0c1411; --accent-soft: #1b2d27; --gold: #e0a84a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1412; --surface: #171e1b; --ink: #e6ece9; --muted: #95a39c;
+    --line: #2a3531; --accent: #5cc2a5; --accent-ink: #0c1411; --accent-soft: #1b2d27; --gold: #e0a84a;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.8 "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  }
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding-inline: 20px; }
+  h1, h2, h3 { font-family: "Noto Serif TC", "Songti TC", serif; text-wrap: balance; line-height: 1.3; margin: 0; }
+  .label {
+    font: 500 12px/1 "JetBrains Mono", ui-monospace, monospace;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  }
+
+  /* ===== 導覽列 ===== */
+  header.nav {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  header.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+  .logo { font: 900 20px/1 "Noto Serif TC", serif; color: var(--ink); text-decoration: none; }
+  .logo span { color: var(--accent); }
+  nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+  nav a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  nav a:hover { color: var(--ink); }
+
+  /* ===== 開場 ===== */
+  .hero { padding-block: 64px 48px; }
+  .hero .wrap { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: center; }
+  .portrait {
+    width: 100%; max-width: 280px; aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden;
+    background: var(--accent-soft); display: grid; place-items: center;
+    border: 1px solid var(--line);
+  }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portrait .initials { font: 900 96px/1 "Noto Serif TC", serif; color: var(--accent); }
+  .hero h1 { font-size: clamp(34px, 5vw, 52px); margin-block: 12px 16px; }
+  .hero h1 small { display: block; font-size: .42em; font-weight: 600; color: var(--muted); margin-top: 8px; }
+  .hero p.lead { font-size: 18px; color: var(--muted); max-width: 34em; margin: 0 0 20px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+  .badge {
+    font-size: 13px; padding: 4px 12px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent); font-weight: 500;
+  }
+  .badge.award { background: transparent; color: var(--gold); border: 1px solid currentColor; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 6px;
+    font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid var(--accent);
+  }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.ghost { color: var(--accent); }
+
+  /* ===== 數字列 ===== */
+  .stats { border-block: 1px solid var(--line); background: var(--surface); }
+  .stats .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { padding-block: 26px; padding-inline: 8px; border-left: 1px solid var(--line); }
+  .stat:first-child { border-left: 0; }
+  .stat b { display: block; font: 900 30px/1.1 "Noto Serif TC", serif; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 14px; color: var(--muted); }
+
+  /* ===== 區塊 ===== */
+  section.block { padding-block: 72px 8px; }
+  .block-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+  .block-head h2 { font-size: clamp(26px, 3.4vw, 34px); }
+  .block-head p { margin: 0; color: var(--muted); max-width: 40em; }
+
+  .about-text { max-width: 40em; font-size: 17px; }
+  .about-text p { margin: 0 0 1em; }
+
+  .focus { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .focus article {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+    padding: 26px 24px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .focus h3 { font-size: 20px; }
+  .focus p { margin: 0; color: var(--muted); font-size: 15px; }
+  .focus ul { margin: 0; padding-left: 1.2em; font-size: 15px; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); max-width: 44em; }
+  .timeline li { position: relative; padding: 0 0 28px 28px; }
+  .timeline li::before {
+    content: ""; position: absolute; left: -7px; top: 8px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--bg); border: 2px solid var(--accent);
+  }
+  .timeline time { font: 500 13px/1.6 "JetBrains Mono", ui-monospace, monospace; color: var(--accent); }
+  .timeline h3 { font-size: 18px; margin-block: 2px 4px; }
+  .timeline p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .why div { border-top: 2px solid var(--ink); padding-top: 16px; }
+  .why h3 { font-size: 19px; margin-bottom: 6px; }
+  .why p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .social { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .social a {
+    display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border-radius: 6px;
+    border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--ink);
+    transition: border-color .15s, transform .15s;
+  }
+  .social a:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .social b { font-size: 17px; }
+  .social span { font-size: 13px; color: var(--muted); }
+
+  footer { margin-top: 88px; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 28px; font-size: 14px; color: var(--muted); }
+  footer ul { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 820px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 28px; }
+    .portrait { max-width: 200px; }
+    .focus, .why { grid-template-columns: 1fr; }
+    .social { grid-template-columns: repeat(2, 1fr); }
+    .stats .wrap { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(3) { border-left: 0; }
+    .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+    nav ul { gap: 14px; }
+  }
+  @media (max-width: 480px) {
+    nav ul li:nth-child(n+3) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">小哲<span>筆記</span></a>
+    <nav aria-label="主選單">
+      <ul>
+        <li><a href="#about">關於我</a></li>
+        <li><a href="#focus">專長</a></li>
+        <li><a href="#journey">經歷</a></li>
+        <li><a href="#contact">聯絡</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ===== 開場：換成你的照片、名字、一句話介紹 ===== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="portrait">
+        <!-- 有照片的話：把下面這行換成 <img src="me.jpg" alt="小哲的照片"> -->
+        <span class="initials" aria-hidden="true">哲</span>
+      </div>
+      <div>
+        <div class="label">About · 創辦人</div>
+        <h1>小哲 Jay<small>「小哲筆記」創辦人・前後端工程師</small></h1>
+        <p class="lead">從工程師轉職全職內容創作者。我把複雜的技術和工具，整理成新手也看得懂、馬上能用的教學，讓你少走冤枉路、少繳學費。</p>
+        <div class="badges">
+          <span class="badge award">2025 年度百大創作者</span>
+          <span class="badge">工具開發</span>
+          <span class="badge">YouTube 教學</span>
+          <span class="badge">新手入門</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="https://youtube.com/" target="_blank" rel="noopener">看我的 YouTube</a>
+          <a class="btn ghost" href="#contact">合作洽詢</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 數字列 ===== -->
+  <div class="stats">
+    <div class="wrap">
+      <div class="stat"><b>8 萬+</b><span>YouTube 訂閱</span></div>
+      <div class="stat"><b>300+</b><span>教學影片與文章</span></div>
+      <div class="stat"><b>12</b><span>免費線上工具</span></div>
+      <div class="stat"><b>每週 2 篇</b><span>固定更新</span></div>
+    </div>
+  </div>
+
+  <!-- ===== 關於我 ===== -->
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="block-head">
+        <div class="label">About</div>
+        <h2>關於小哲</h2>
+      </div>
+      <div class="about-text">
+        <p>我是小哲，資訊工程背景，曾在新創公司擔任工程師五年。工作之餘開始寫部落格記錄學習心得，沒想到越來越多讀者來信說「終於看懂了」，於是在 2021 年成立「小哲筆記」，開始全職做內容。</p>
+        <p>我的目標很單純：用最低的成本，幫新手把基礎打穩。每一篇教學我都會親自操作、截圖、踩過坑之後才發布。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 專長領域 ===== -->
+  <section class="block" id="focus">
+    <div class="wrap">
+      <div class="block-head">
+        <div class="label">Focus</div>
+        <h2>我在做的事</h2>
+        <p>三個主要方向，都圍繞著同一件事：讓新手更快上手。</p>
+      </div>
+      <div class="focus">
+        <article>
+          <h3>工具開發</h3>
+          <p>把重複又麻煩的步驟做成免費小工具。</p>
+          <ul><li>手續費試算器</li><li>批次上傳工具</li><li>價格追蹤表</li></ul>
+        </article>
+        <article>
+          <h3>內容創作</h3>
+          <p>長短影音、圖文教學，在各平台同步更新。</p>
+          <ul><li>YouTube 完整教學</li><li>Instagram 圖解懶人包</li><li>Threads 每日短評</li></ul>
+        </article>
+        <article>
+          <h3>新手入門指南</h3>
+          <p>從註冊到實際操作，一步步帶你完成。</p>
+          <ul><li>平台註冊教學</li><li>常見錯誤整理</li><li>讀者問答</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 經歷（依時間排序） ===== -->
+  <section class="block" id="journey">
+    <div class="wrap">
+      <div class="block-head">
+        <div class="label">Journey</div>
+        <h2>一路走來</h2>
+      </div>
+      <ol class="timeline">
+        <li><time>2025</time><h3>獲選年度百大創作者</h3><p>頻道訂閱突破 8 萬，推出第 12 個免費工具。</p></li>
+        <li><time>2023</time><h3>YouTube 頻道破萬訂閱</h3><p>開始固定每週更新影片，並與多家平台合作。</p></li>
+        <li><time>2021</time><h3>成立「小哲筆記」</h3><p>離開工程師工作，全職投入內容創作。</p></li>
+        <li><time>2016</time><h3>新創公司工程師</h3><p>負責前後端開發，累積五年產品經驗。</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== 為什麼找我 ===== -->
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head">
+        <div class="label">Why</div>
+        <h2>為什麼跟著小哲學</h2>
+      </div>
+      <div class="why">
+        <div><h3>新手友善</h3><p>不假設你懂任何術語，每一步都有截圖。</p></div>
+        <div><h3>親自實測</h3><p>所有推薦與優惠都自己用過、確認有效才分享。</p></div>
+        <div><h3>穩定更新</h3><p>每週固定產出，資訊有變動會回頭修正舊文。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 社群連結：把網址換成你的 ===== -->
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="block-head">
+        <div class="label">Community</div>
+        <h2>加入社群</h2>
+        <p>合作洽詢請寄信到 <strong>hello@example.com</strong></p>
+      </div>
+      <div class="social">
+        <a href="https://youtube.com/" target="_blank" rel="noopener"><b>YouTube</b><span>完整影片教學</span></a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener"><b>Instagram</b><span>圖解懶人包</span></a>
+        <a href="https://threads.net/" target="_blank" rel="noopener"><b>Threads</b><span>每日短評</span></a>
+        <a href="https://x.com/" target="_blank" rel="noopener"><b>X / Twitter</b><span>即時消息</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 小哲筆記</span>
+    <ul>
+      <li><a href="#">隱私權政策</a></li>
+      <li><a href="#">揭露政策</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
