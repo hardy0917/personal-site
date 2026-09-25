@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>賴宏運</title>
+<title>賴宏運的個人網頁</title>
 <meta name="description" content="賴宏運的個人網站：軟體工程師，資工背景，具金融交易系統開發經驗。">
 <link rel="icon" href="avatar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -175,6 +175,18 @@
   .timeline ul:not(.chips) { margin: 0 0 14px; padding-left: 1.2em; }
   .timeline ul:not(.chips) li::marker { color: var(--accent); }
 
+  .project { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: start; }
+  .project .shot { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+  .project .shot img { display: block; width: 100%; height: auto; transition: transform .3s; }
+  .project .shot:hover img { transform: scale(1.02); }
+  .project-body { display: flex; flex-direction: column; gap: 12px; }
+  .project-body .path { font: 500 13px/1.4 "JetBrains Mono", ui-monospace, monospace; color: var(--muted); }
+  .project-body h3 { font-size: 22px; }
+  .project-body p { margin: 0; color: var(--muted); font-size: 15px; }
+  .project-body ul:not(.chips) { margin: 0; padding-left: 1.2em; font-size: 15px; }
+  .project-body ul:not(.chips) li::marker { color: var(--accent); }
+  .project-body .note { font-size: 12.5px; }
+
   .traits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .traits h3 { font-size: 19px; margin-bottom: 6px; }
   .traits p { margin: 0; color: var(--muted); font-size: 15px; }
@@ -201,7 +213,7 @@
 
   @media (max-width: 860px) {
     .hero { padding-block: 44px; }
-    .hero .wrap, .about, .skills, .traits { grid-template-columns: 1fr; }
+    .hero .wrap, .about, .skills, .traits, .project { grid-template-columns: 1fr; }
     .facts dl { grid-template-columns: repeat(2, 1fr); }
     .facts dl > div:nth-child(3) { border-left: 0; }
     .facts dl > div:nth-child(n+3) { border-top: 1px solid var(--line); }
@@ -229,6 +241,7 @@
       <ul>
         <li><a href="#about">關於我</a></li>
         <li><a href="#skills">技能</a></li>
+        <li><a href="#projects">作品</a></li>
         <li><a href="#journey">經歷</a></li>
         <li><a href="#contact">聯絡</a></li>
       </ul>
@@ -315,6 +328,34 @@
           <ul class="chips"><li class="main">Git</li><li>可行性評估</li><li>規格撰寫</li><li>測試驗收</li></ul>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== 專案作品 ===== -->
+  <section class="block" id="projects">
+    <div class="wrap">
+      <div class="block-head"><div class="mono">// projects</div><h2>專案作品</h2></div>
+      <article class="card project">
+        <a class="shot" href="https://github.com/hardy0917/taiwan-stock-tool" target="_blank" rel="noopener">
+          <img src="img/taiwan-stock-tool.jpg" alt="台股分析工具畫面：產業資金流向熱力圖" loading="lazy" width="1160" height="810">
+        </a>
+        <div class="project-body">
+          <span class="path">~/taiwan-stock-tool · 個人專案 · v2.0</span>
+          <h3>台股分析工具</h3>
+          <p>純本機執行的台股分析儀表板，整合技術面、基本面與籌碼面，輔助判斷隔天值得觀察的股票。資料即時抓取證交所、集保結算所、期交所與 Yahoo Finance 的公開 API，不需付費資料源或金鑰。</p>
+          <ul>
+            <li>多因子選股篩選器：綜合月線趨勢、營收、EPS、本益比、大戶持股變化算出評分，並標示風險警示。</li>
+            <li>K 線走勢圖、布林通道、當日分鐘走勢，以及產業資金流向熱力圖。</li>
+            <li>後端只用 Python 標準函式庫，並用 PyInstaller 打包成免安裝版 exe。</li>
+          </ul>
+          <ul class="chips"><li class="main">Python</li><li class="main">JavaScript</li><li>HTTP Server</li><li>Open Data API</li><li>PyInstaller</li></ul>
+          <div class="cta">
+            <a class="btn primary" href="https://github.com/hardy0917/taiwan-stock-tool" target="_blank" rel="noopener">看原始碼 →</a>
+            <a class="btn" href="https://github.com/hardy0917/taiwan-stock-tool/releases" target="_blank" rel="noopener">下載免安裝版</a>
+          </div>
+          <p class="note">本工具僅供學習研究，所有分析結果不構成任何投資建議。</p>
+        </div>
+      </article>
     </div>
   </section>
 
