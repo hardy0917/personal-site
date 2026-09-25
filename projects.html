@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>專案作品｜賴宏運的個人網頁</title>
+<meta name="description" content="賴宏運的專案作品：台股分析工具等個人開發專案。">
+<link rel="icon" href="avatar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="home" href="index.html"><img src="avatar.png" alt=""><span>回主頁</span></a>
+    <nav aria-label="主選單">
+      <ul>
+        <li><a href="index.html#about">關於我</a></li>
+        <li><a href="index.html#skills">技能</a></li>
+        <li><a href="projects.html" aria-current="page">作品</a></li>
+        <li><a href="index.html#journey">經歷</a></li>
+        <li><a href="index.html#contact">聯絡</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ===== 專案作品 ===== -->
+  <section class="block page-top" id="projects">
+    <div class="wrap">
+      <div class="block-head"><div class="mono">// projects</div><h2>專案作品</h2></div>
+      <article class="card project">
+        <a class="shot" href="https://github.com/hardy0917/taiwan-stock-tool" target="_blank" rel="noopener">
+          <img src="img/taiwan-stock-tool.jpg" alt="台股分析工具畫面：產業資金流向熱力圖" loading="lazy" width="1160" height="810">
+        </a>
+        <div class="project-body">
+          <span class="path">~/taiwan-stock-tool · 個人專案 · v2.0</span>
+          <h3>台股分析工具</h3>
+          <p>純本機執行的台股分析儀表板，整合技術面、基本面與籌碼面，輔助判斷隔天值得觀察的股票。資料即時抓取證交所、集保結算所、期交所與 Yahoo Finance 的公開 API，不需付費資料源或金鑰。</p>
+          <ul>
+            <li>多因子選股篩選器：綜合月線趨勢、營收、EPS、本益比、大戶持股變化算出評分，並標示風險警示。</li>
+            <li>K 線走勢圖、布林通道、當日分鐘走勢，以及產業資金流向熱力圖。</li>
+            <li>後端只用 Python 標準函式庫，並用 PyInstaller 打包成免安裝版 exe。</li>
+          </ul>
+          <ul class="chips"><li class="main">Python</li><li class="main">JavaScript</li><li>HTTP Server</li><li>Open Data API</li><li>PyInstaller</li></ul>
+          <div class="cta">
+            <a class="btn primary" href="https://github.com/hardy0917/taiwan-stock-tool" target="_blank" rel="noopener">看原始碼 →</a>
+            <a class="btn" href="https://github.com/hardy0917/taiwan-stock-tool/releases" target="_blank" rel="noopener">下載免安裝版</a>
+          </div>
+          <p class="note">本工具僅供學習研究，所有分析結果不構成任何投資建議。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 賴宏運. All rights reserved. 本站內容未經授權請勿轉載或使用。</span>
+    <span class="mono">built with HTML &amp; CSS</span>
+    <p class="fine">隱私說明：本站不使用 cookie，不收集訪客的個人資料；字型由 Google Fonts 提供，載入時您的瀏覽器會連線至 Google 伺服器。</p>
+  </div>
+</footer>
+
+</body>
+</html>
