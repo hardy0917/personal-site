@@ -197,6 +197,7 @@
   .contact .btn.ghost:hover { border-color: #fff; }
 
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-block: 40px; color: var(--muted); font-size: 13px; }
+  footer .fine { flex-basis: 100%; margin: 0; font-size: 12px; opacity: .8; }
 
   @media (max-width: 860px) {
     .hero { padding-block: 44px; }
@@ -381,7 +382,8 @@
         <p>歡迎工作機會與合作洽詢。</p>
       </div>
       <div class="links">
-        <a class="btn" href="mailto:hardy44988820@gmail.com">hardy44988820@gmail.com</a>
+        <!-- 信箱拆開寫，由下方程式組回來，降低被垃圾信機器人抓取的機率 -->
+        <a class="btn" id="mail" data-u="hardy44988820" data-d="gmail.com">hardy44988820 [at] gmail.com</a>
         <a class="btn ghost" href="https://github.com/hardy0917" target="_blank" rel="noopener">GitHub →</a>
       </div>
     </div>
@@ -390,10 +392,21 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 賴宏運</span>
+    <span>© 2026 賴宏運. All rights reserved. 本站內容未經授權請勿轉載或使用。</span>
     <span class="mono">built with HTML &amp; CSS</span>
+    <p class="fine">隱私說明：本站不使用 cookie，不收集訪客的個人資料；字型由 Google Fonts 提供，載入時您的瀏覽器會連線至 Google 伺服器。</p>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var a = document.getElementById('mail');
+    if (!a) return;
+    var addr = a.dataset.u + '@' + a.dataset.d;
+    a.href = 'mailto:' + addr;
+    a.textContent = addr;
+  })();
+</script>
 
 </body>
 </html>
