@@ -40,8 +40,13 @@
     animation:sw-in .16s ease-out}
   @keyframes sw-in{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
   @media (prefers-reduced-motion:reduce){.sw-panel{animation:none}.sw-fab{transition:none}}
-  .sw-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:6px}
-  .sw-head b{font-size:15px}
+  .sw-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+  .sw-tabs{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:var(--accent-soft,rgba(31,94,255,.09))}
+  .sw-tab{border:0;background:none;color:var(--muted,#5a6477);font:700 14px/1 "Noto Sans TC","Microsoft JhengHei",sans-serif;
+    padding:6px 12px;border-radius:999px;cursor:pointer}
+  .sw-tab:hover{color:var(--ink,#0e1422)}
+  .sw-tab[aria-selected="true"]{background:var(--surface,#fff);color:var(--ink,#0e1422);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .sw-tab:focus-visible{outline:2px solid var(--accent,#1f5eff);outline-offset:1px}
   .sw-status{font-size:12px;color:var(--muted,#5a6477)}
   .sw-status.sw-err{color:#d97706}
   .sw-row{display:grid;grid-template-columns:2.6em 1fr auto 76px;align-items:center;gap:8px;
@@ -82,12 +87,8 @@
   .sw-stats div{min-width:0;padding:4px 8px;border-radius:6px;background:var(--accent-soft,rgba(31,94,255,.06))}
   .sw-stats dt{font-size:11px;line-height:1.3;color:var(--muted,#5a6477)}
   .sw-stats dd{margin:0;font-size:13px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .sw-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
-  .sw-switch{flex:none;border:1px solid var(--line,#dce2ec);background:var(--surface,#fff);color:var(--accent,#1f5eff);
-    font:500 12px/1 "Noto Sans TC","Microsoft JhengHei",sans-serif;padding:7px 11px;border-radius:999px;cursor:pointer}
-  .sw-switch:hover{background:var(--accent-soft,rgba(31,94,255,.09))}
-  .sw-switch:focus-visible{outline:2px solid var(--accent,#1f5eff);outline-offset:2px}
-  .sw-src{font-size:11px;color:var(--muted,#5a6477);text-align:right}
+  .sw-foot{margin-top:8px}
+  .sw-src{font-size:11px;color:var(--muted,#5a6477)}
   .sw-up{color:var(--sw-up)} .sw-down{color:var(--sw-down)} .sw-flat{color:var(--sw-flat)}
   @media (max-width:420px){
     .sw-row{grid-template-columns:2.3em 1fr auto 52px;gap:6px}
@@ -149,7 +150,13 @@
   const panel = el("section", { class: "sw-panel", id: "sw-panel", role: "dialog", "aria-label": "台股看盤" });
   panel.hidden = true;
   panel.innerHTML = `
-    <div class="sw-head"><b class="sw-htitle">台股大盤</b><span class="sw-status">載入中…</span></div>
+    <div class="sw-head">
+      <div class="sw-tabs" role="tablist" aria-label="看盤分頁">
+        <button class="sw-tab" type="button" role="tab" data-view="index">台股大盤</button>
+        <button class="sw-tab" type="button" role="tab" data-view="watch">☆ 自選股</button>
+      </div>
+      <span class="sw-status">載入中…</span>
+    </div>
     <div class="sw-vindex"></div>
     <div class="sw-vwatch" hidden>
       <div class="sw-search">
@@ -165,16 +172,16 @@
       <canvas class="sw-chart" aria-label="分時走勢與成交量"></canvas>
       <dl class="sw-stats"></dl>
     </div>
-    <div class="sw-foot"><button class="sw-switch" type="button"></button><span class="sw-src"></span></div>`;
+    <div class="sw-foot"><span class="sw-src"></span></div>`;
   root.append(panel, fab);
   document.body.appendChild(root);
 
   const $ = (s) => panel.querySelector(s);
-  const status = $(".sw-status"), htitle = $(".sw-htitle");
+  const status = $(".sw-status"), tabs = panel.querySelectorAll(".sw-tab");
   const vIndex = $(".sw-vindex"), vWatch = $(".sw-vwatch"), wrows = $(".sw-wrows");
   const input = $(".sw-search input"), sugg = $(".sw-sugg"), msg = $(".sw-msg");
   const detail = $(".sw-detail"), dtitle = $(".sw-dtitle"), chart = $(".sw-chart"), statsBox = $(".sw-stats");
-  const switchBtn = $(".sw-switch"), src = $(".sw-src");
+  const src = $(".sw-src");
 
   const idxRows = {};
   for (const [code, name] of INDICES) {
@@ -355,10 +362,8 @@
   function render() {
     const isIdx = view === "index";
     vIndex.hidden = !isIdx; vWatch.hidden = isIdx;
-    htitle.textContent = isIdx ? "台股大盤" : "自選股";
-    switchBtn.textContent = isIdx ? "☆ 自選股" : "← 大盤";
-    switchBtn.setAttribute("aria-label", isIdx ? "切換到自選股" : "切換回大盤");
-    src.textContent = isIdx ? "資料：臺灣證券交易所・約延遲 15 秒" : "報價：證交所・走勢：Yahoo Finance";
+    tabs.forEach((t) => t.setAttribute("aria-selected", String(t.dataset.view === view)));
+    src.textContent = isIdx ? "資料來源：臺灣證券交易所・約延遲 15 秒・僅供參考" : "報價：臺灣證券交易所・走勢：Yahoo Finance・僅供參考";
     if (isIdx) renderIndex(); else renderWatch();
   }
 
@@ -562,7 +567,7 @@
     view = v; ls.set(LS_VIEW, v); hoverX = null; showMsg(""); closeSugg();
     render(); load();
   }
-  switchBtn.addEventListener("click", () => setView(view === "index" ? "watch" : "index"));
+  tabs.forEach((t) => t.addEventListener("click", () => { if (t.dataset.view !== view) setView(t.dataset.view); }));
   function setOpen(open) {
     panel.hidden = !open;
     fab.setAttribute("aria-expanded", String(open));
