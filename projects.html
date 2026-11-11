@@ -63,9 +63,12 @@
   <div class="wrap">
     <span>© 2026 賴宏運. All rights reserved. 本站內容未經授權請勿轉載或使用。</span>
     <span class="mono">built with HTML &amp; CSS</span>
-    <p class="fine">隱私說明：本站不使用 cookie，不收集訪客的個人資料；字型由 Google Fonts 提供，載入時您的瀏覽器會連線至 Google 伺服器。</p>
+    <p class="fine">隱私說明：本站不使用 cookie，不收集訪客的個人資料；字型由 Google Fonts 提供，載入時您的瀏覽器會連線至 Google 伺服器。右下角的台股看盤工具在開啟時，會透過 Cloudflare 向臺灣證券交易所取得公開行情資料。</p>
   </div>
 </footer>
+
+<!-- 右下角看盤小工具：data-api 填 Cloudflare Worker 網址（程式見 worker/worker.js） -->
+<script src="stock-widget.js" data-api="https://twse-proxy.hardy44988820.workers.dev/indices" defer></script>
 
 </body>
 </html>
